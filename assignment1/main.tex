@@ -132,7 +132,7 @@ ox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
 \renewcommand{\thetable}{\theenumi}
 Github Link
 \begin{lstlisting}
-github.com/tarandeep97/AI5030/assignment1
+https://github.com/Tarandeep97/AI5030
 \end{lstlisting}
 \section{Problem}
 (51) Consider a Markov Chain with state space  \{0,1,2,3,4\} and transition matrix
@@ -144,36 +144,129 @@ P=\begin{matrix} & \begin{matrix}0&&1&&2&&3 && 4\end{matrix} \\\\ \begin{matrix}
 Then \lim _{n \rightarrow \infty} p_{23}^{(n)} equals?
 \endenumerate}
 \section{Solution}
-Given state space, S = \{0,1,2,3,4\}. \\ \\
-From state diagram (Fig.0) created from transition \\
-matrix, below are classes for each state
+Here $p_{23}^{(n)}$ can be written as follows,
 \begin{align}
-c(0) = \{0\}, \\
-c(1) = c(2) = c(3) = \{1,2,3\}, \\
-c(4) = \{4\}
+   p_{23}^{(n)} = P\{X_{n}=2|X_{0}=3\} 
 \end{align}
-where, c(i) is class of state $\forall i\in S$, which is a set that includes the communicating states of state i.
+i.e. probability of reaching state 2 after n steps from state 3.
 \\
-\\
-Since, different classes are obtained, given Markov chain is reducible and states can either be recurrent or transient or both. 
-\\
-\\
-Here, state 0 \& 4 are \textbf{recurrent states}, as once entered in these states it is guaranteed to return to the state again.\\
-State 3 is a \textbf{transient state}, as there is possibility that beginning from this state we will never return to this state. \\
-%
-If j is transient  $\forall i\in S$ then, \\
+From the given transition matrix,
 \begin{align}
-   \lim _{n \rightarrow \infty} p_{ij}^{(n)} = 0 
+   p_{23}^{(1)} = 1/3
 \end{align}
+This is the initial probability as per transition matrix P. 
 \\
- Hence,
+In order to find $p_{ij}^{(n)}$, corresponding entry of $P^n$ matrix is required.
+To find $P^n$, diagonalized form of P is required.  \\
+Using characteristic equation,
+\begin{align}
+    |P-\lambda I|=0
+\end{align}
+\begin{align}
+    \left|\begin{array}{ccccc}1 - \lambda & 0 & 0 & 0 & 0\\\frac{1}{3} & \frac{1}{3} - \lambda & \frac{1}{3} & 0 & 0\\0 & \frac{1}{3} & \frac{1}{3} - \lambda & \frac{1}{3} & 0\\0 & 0 & \frac{1}{3} & \frac{1}{3} - \lambda & \frac{1}{3}\\0 & 0 & 0 & 0 & 1 - \lambda\end{array}\right| = 0
+\end{align}
+\begin{align}
+\left(1-\lambda\right)^{2} \left(- \lambda^{3} + \lambda^{2} - \frac{\lambda}{9} - \frac{1}{27}\right) = 0
+\end{align}
+On solving, below are eigen values and corresponding eigen vectors of P
+\begin{align}
+\lambda_{1} = \frac{1}{3}, \left[\begin{array}{c}0\\-1\\0\\1\\0\end{array}\right]\right\ \\
+\lambda_{2} = 1,\lambda_{3} = 1, \left[\begin{array}{c}4\\3\\2\\1\\0\end{array}\right], \left[\begin{array}{c}-3\\-2\\-1\\0\\1\end{array}\right]
+\\
+\lambda_{4} = 
+- \frac{-1 + \sqrt{2}}{3}, \left[\begin{array}{c}0\\1\\- \sqrt{2}\\1\\0\end{array}\right]
+\\
+\lambda_{5}= 
+\frac{1 + \sqrt{2}}{3},\left[\begin{array}{c}0\\1\\\sqrt{2}\\1\\0\end{array}\right]
+\end{align}
+Diagnolizing P from obtained eigen values and vectors,
+\begin{align}
+    P = X D X^{-1}
+\end{align}
+where,
+\begin{align}
+    D = \left[\begin{array}{ccccc}\frac{1}{3} & 0 & 0 & 0 & 0\\0 & 1 & 0 & 0 & 0\\0 & 0 & 1 & 0 & 0\\0 & 0 & 0 & - \frac{-1 + \sqrt{2}}{3} & 0\\0 & 0 & 0 & 0 & \frac{1 + \sqrt{2}}{3}\end{array}\right]
+\end{align}
+\begin{align}
+    X = \left[\begin{array}{ccccc}0 & 4 & -3 & 0 & 0\\-1 & 3 & -2 & 1 & 1\\0 & 2 & -1 & - \sqrt{2} & \sqrt{2}\\1 & 1 & 0 & 1 & 1\\0 & 0 & 1 & 0 & 0\end{array}\right]
+\end{align}
+\begin{align}
+    X^{-1} = \left[\begin{array}{ccccc}\frac{1}{4} & - \frac{1}{2} & 0 & \frac{1}{2} & - \frac{1}{4}\\\frac{1}{4} & 0 & 0 & 0 & \frac{3}{4}\\0 & 0 & 0 & 0 & 1\\\frac{-2 + \sqrt{2}}{8} & \frac{1}{4} & - \frac{\sqrt{2}}{4} & \frac{1}{4} & \frac{-2 + \sqrt{2}}{8}\\- \frac{\sqrt{2} + 2}{8} & \frac{1}{4} & \frac{\sqrt{2}}{4} & \frac{1}{4} & - \frac{\sqrt{2} + 2}{8}\end{array}\right]
+\end{align}
+\begin{align}
+    P^{n} = X D^{n}X^{-1}
+\end{align}
+After obtaining $X D^{n}X^{-1}$, the required entry comes out to be
+\begin{align}
+    P^{n}[3][2] = \frac{\sqrt{2}\left(\left(1 - \sqrt{2}\right)^{n} - \left(1 + \sqrt{2}\right)^{n}\right)}{4\cdot3^{n}} 
+\end{align}
+As n $\rightarrow\infty$,
+\begin{align}
+    P^{n}[3][2] = 0
+\end{align}
+Hence,
   \lim _{n \rightarrow \infty} p_{23}^{(n)} = 0 
-  
-\begin{figure}[!ht]
-\centering
-         \frame{\includegraphics[width=\columnwidth,fbox]{state_dia.PNG}}
-         \caption{State diagram}
-         \label{Figure}
-\end{figure}
+\section{Appendix}
+\textbf{Calculation of Eigen Values and Eigen Vectors}
+\begin{align}
+    \left|\begin{array}{ccccc}1 - \lambda & 0 & 0 & 0 & 0\\\frac{1}{3} & \frac{1}{3} - \lambda & \frac{1}{3} & 0 & 0\\0 & \frac{1}{3} & \frac{1}{3} - \lambda & \frac{1}{3} & 0\\0 & 0 & \frac{1}{3} & \frac{1}{3} - \lambda & \frac{1}{3}\\0 & 0 & 0 & 0 & 1 - \lambda\end{array}\right| = 0
+\end{align}
+Expanding along row 1:
+\begin{align}
+(1-\lambda)
+ \left|\begin{array}{cccc}\frac{1}{3} - \lambda & \frac{1}{3} & 0 & 0\\\frac{1}{3} & \frac{1}{3} - \lambda & \frac{1}{3} & 0\\0 & \frac{1}{3} & \frac{1}{3} - \lambda & \frac{1}{3}\\0 & 0 & 0 & 1 - \lambda\end{array}\right|
+\end{align}
+Expanding along row 4:
+\begin{align}
+(1-\lambda)^2
+ \left|\begin{array}{ccc}\frac{1}{3} - \lambda & \frac{1}{3} & 0 \\\frac{1}{3} & \frac{1}{3} - \lambda & \frac{1}{3} \\0 & \frac{1}{3} & \frac{1}{3} - \lambda \end{array}\right| 
+\end{align}
+Performing $C_{1} = C_{1} - \left(1 - 3 \lambda\right) C_{2}$
+\begin{align}
+(1-\lambda)^2
+ \left|\begin{array}{ccc}0 & \frac{1}{3} & 0\\\lambda \left(2 - 3 \lambda\right) & \frac{1}{3} - \lambda & \frac{1}{3}\\\lambda - \frac{1}{3} & \frac{1}{3} & \frac{1}{3} - \lambda\end{array}\right|
+\end{align}
+Expanding along row 1:
+\begin{align}
+(1-\lambda)^2\cdot \left(-\frac{1}{3}\right) 
+\left(\left(\lambda \left(2 - 3 \lambda\right)\right)\cdot \left(\frac{1}{3} - \lambda\right) - \left(\frac{1}{3}\right)\cdot \left(\lambda - \frac{1}{3}\right)\right)
+\end{align}
+\begin{align}
+\left(1-\lambda\right)^{2} \left(- \lambda^{3} + \lambda^{2} - \frac{\lambda}{9} - \frac{1}{27}\right) = 0
+\end{align}
+Solving this equation,
+\begin{align}
+    \lambda = \frac{1}{3},1,1,- \frac{-1 + \sqrt{2}}{3},\frac{1 + \sqrt{2}}{3}
+\end{align}
+For  $\lambda = \frac{1}{3}$, we can find eigen vector by putting its values in characterstic equation
+\begin{align}
+    \left[\begin{array}{ccccc}\frac{2}{3} & 0 & 0 & 0 & 0\\\frac{1}{3} & 0 & \frac{1}{3} & 0 & 0\\0 & \frac{1}{3} & 0 & \frac{1}{3} & 0\\0 & 0 & \frac{1}{3} & 0 & \frac{1}{3}\\0 & 0 & 0 & 0 & \frac{2}{3}\end{array}\right]
+\end{align}
+Finding row reduced echelon form of matrix and finding solution,
+\begin{align}
+    \left[\begin{array}{ccccc}1 & 0 & 0 & 0 & 0\\0 & 1 & 0 & 1 & 0\\0 & 0 & 1 & 0 & 0\\0 & 0 & 0 & 0 & 1\\0 & 0 & 0 & 0 & 0\end{array}\right]\left[\begin{array}{c}x_{1}\\x_{2}\\x_{3}\\x_{4}\\x_{5}\end{array}\right] = \left[\begin{array}{c}0\\0\\0\\0\\0\end{array}\right]
+\end{align}
+Here,
+\begin{align}
+    x_{2} + x_{4} = 0 \\
+    x_{1} =x_{3} = x_{5} = 0 
+\end{align}
+Let  $x_{2} = -t$ \\
+From this, below is the eigen vector,
+\begin{align}
+    \left[\begin{array}{c}x_{1}\\x_{2}\\x_{3}\\x_{4}\\x_{5}\end{array}\right] = \left[\begin{array}{c}0\\-1\\0\\1\\0\end{array}\right]\right\ t
+\end{align}
+Similary, we can obtain for other Eigen Values.
+\begin{align}
+\lambda_{2} = 1,\lambda_{3} = 1, \left[\begin{array}{c}4\\3\\2\\1\\0\end{array}\right], \left[\begin{array}{c}-3\\-2\\-1\\0\\1\end{array}\right]
 \\
+\lambda_{4} = 
+- \frac{-1 + \sqrt{2}}{3}, \left[\begin{array}{c}0\\1\\- \sqrt{2}\\1\\0\end{array}\right]
+\\
+\lambda_{5}= 
+\frac{1 + \sqrt{2}}{3},\left[\begin{array}{c}0\\1\\\sqrt{2}\\1\\0\end{array}\right]
+\end{align}
+\\ 
+\\
+
 \end{document}

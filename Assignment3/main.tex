@@ -1,0 +1,207 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+
+\usepackage{setspace}
+\usepackage{gensymb}
+\singlespacing
+\usepackage[cmex10]{amsmath}
+\usepackage{caption}
+
+\usepackage{amsthm}
+
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{bm}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+
+\usepackage{longtable}
+\usepackage{multirow}
+
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{steinmetz}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{verbatim}
+\usepackage{tfrupee}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{graphicx}
+\usepackage{tkz-euclide}
+
+\usetikzlibrary{calc,math}
+\usepackage{listings}
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+    \usepackage{lscape}     
+\usepackage{multicol}
+\usepackage{chngcntr}
+
+\DeclareMathOperator*{\Res}{Res}
+
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+\def\inputGnumericTable{}                                 %%
+
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+\begin{document}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}[problem]{Definition}
+
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\bibliographystyle{IEEEtran}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+%\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E\left[ #1 \right]}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+%\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
+\providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
+ %\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\cosec}{\,\text{cosec}\,}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\numberwithin{equation}{subsection}
+\makeatletter
+\@addtoreset{figure}{problem}
+\makeatother
+\let\StandardTheFigure\thefigure
+\let\vec\mathbf
+\renewcommand{\thefigure}{\theproblem}
+\def\putbox#1#2#3{\makebox[0in][l]{\makeb
+ox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
+     \def\rightbox#1{\makebox[0in][r]{#1}}
+     \def\centbox#1{\makebox[0in]{#1}}
+     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
+     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
+\vspace{3cm}
+\title{Assignment 3 - Q49, Dec 2018}
+\author{Tarandeep Singh}
+\maketitle
+\newpage
+\bigskip
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+Github Link
+\begin{lstlisting}
+https://github.com/Tarandeep97/AI5030
+\end{lstlisting}
+\section{Problem}
+(Q49, Dec 2018) Let $X \geq 0$ be a random variable on  $(\Omega,{\mathcal {F}}, P)$ with $\mathbb{E}(X)=1$. Let $A\in{\mathcal {F}}$ be an event with $ 0 < P(A) < 1$. Which of the following defines another probability measure on $(\Omega,{\mathcal {F}})$?
+\begin{enumerate}
+\item $Q(B) = P(A\cap B)$     $\forall B \in {\mathcal {F}}$
+\item $Q(B) = P(A\cup B)$     $\forall B \in {\mathcal {F}}$
+\item $Q(B) = \mathbb{E}(XI_{B})$     $\forall B \in {\mathcal {F}}$ 
+\item $Q(B) = \begin{cases} 
+      P(A/B) & P(B)> 0 \\
+      0 & P(B) = 0 
+   \end{cases}$
+
+\end{enumerate}
+
+\section{Solution}
+\textbf{Properties of Probability measure} \\
+A Probability measure on $(\Omega,{\mathcal {F}})$ is a function $P:{\mathcal {F}} \rightarrow [0,1]$ satisfying:
+\begin{enumerate}
+\item $P(\Omega)=1, P(\phi)=0$
+\item If $A_{1},A_{2},A_{3}... \in {\mathcal {F}}$  is a collection of disjoint members in ${\mathcal {F}}$, then  \\
+ \[P\left(\bigcup_{i=1}^{\infty} A_{i}\right)= \sum_{i=1}^{\infty} P(A_{i}) \]  
+\end{enumerate}
+\textbf{Investigating Options}\\
+Option 1, if $B= \Omega$, then
+\begin{align}
+    Q(\Omega) = P(A \cap \Omega) = P(A) \neq 1
+\end{align}
+
+Option 2, if $B= \phi$, then
+\begin{align}
+    Q(\phi) = P(A \cup \phi) = P(A) \neq 0
+\end{align}
+Option 4, if $B= \Omega$, then
+\begin{align}
+    Q(\Omega) = P(A/\Omega) = \frac{P(A \cap \Omega)}{P(\Omega)} \\
+    = P(A)\neq 1
+\end{align}
+Option 3, Here the indicator function $I_{B}$ defines a Bernoulli random variable. 
+\begin{align}
+I_{B} = \begin{cases}
+1 & \text{ if $x\in B$},\\
+0 & \text{ if $x\notin B$},
+\end{cases}
+\end{align}
+if $B=\phi$, 
+\begin{align}
+    Q(\phi) = E(XI_{\phi}) =0
+\end{align}
+if $B=\Omega$, 
+\begin{align}
+    Q(\Omega) = E(XI_{\Omega}) = E(X)=1
+\end{align}
+Checking for Countable additivity of Q(property 2),
+\begin{align}
+    Q\left(\bigcup_{i=1}^{\infty} A_{i}\right) = E(XI_{\bigcup_{i=1}^{\infty} A_{i}\right)})
+\end{align}
+\begin{align}
+    =E\left(X\sum_{i=1}^{\infty}I_{A_{i}}\right) =E\left(\lim_{n\to\infty}\sum_{i=1}^{n}XI_{A_{i}}\right)
+\end{align}
+\begin{align}
+    =\lim_{n\to\infty}\sum_{i=1}^{n}E\left(XI_{A_{i}}\right) 
+\end{align}
+\begin{align}
+    =\sum_{i=1}^{\infty}E\left(XI_{A_{i}}\right) = \sum_{i=1}^{\infty}Q(A_{i})
+\end{align}
+Option 3 satisfies properties of a probability measure. Hence, it is the correct option.\\
+
+
+
+\end{document}

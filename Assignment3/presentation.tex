@@ -1,0 +1,114 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{beaver}
+\usepackage{amsmath}
+\usepackage{verbatim}
+
+\title{Probability Axioms}
+\subtitle{Assignment 3 - Q49, Dec 2018}
+\author{Tarandeep Singh}
+\institute{IIT Hyderabad}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+\begin{comment}
+\section{Introduction}
+
+
+\end{comment}
+\section{The Problem}
+\subsection{Problem Statement}
+
+\begin{frame}
+\frametitle{Problem Statement}
+Let $X \geq 0$ be a random variable on  $(\Omega,{\mathcal {F}}, P)$ with $\mathbb{E}(X)=1$. Let $A\in{\mathcal {F}}$ be an event with $ 0 < P(A) < 1$. Which of the following defines another probability measure on $(\Omega,{\mathcal {F}})$?
+\begin{enumerate}
+\item $Q(B) = P(A\cap B)$     $\forall B \in {\mathcal {F}}$
+\item $Q(B) = P(A\cup B)$     $\forall B \in {\mathcal {F}}$
+\item $Q(B) = \mathbb{E}(XI_{B})$     $\forall B \in {\mathcal {F}}$ 
+\item $Q(B) = \begin{cases} 
+      P(A/B) & P(B)> 0 \\
+      0 & P(B) = 0 
+   \end{cases}$
+
+\end{enumerate}
+\end{frame}
+
+
+
+\subsection{Problem Explanation}
+\begin{frame}
+\frametitle{Properties of Probability Measure}
+A Probability measure on $(\Omega,{\mathcal {F}})$ is a function $P:{\mathcal {F}} \rightarrow [0,1]$ satisfying:
+\begin{enumerate}
+\item $P(\Omega)=1, P(\phi)=0$
+\item If $A_{1},A_{2},A_{3}... \in {\mathcal {F}}$  is a collection of disjoint members in ${\mathcal {F}}$, then  \\
+ \[P\left(\bigcup_{i=1}^{\infty} A_{i}\right)= \sum_{i=1}^{\infty} P(A_{i}) \]  
+\end{enumerate}
+\end{frame}
+
+\section{Solution}
+\begin{frame}
+\frametitle{Solution}
+Option 1, if $B= \Omega$, then
+\begin{align}
+    Q(\Omega) = P(A \cap \Omega) = P(A) \neq 1
+\end{align}
+
+Option 2, if $B= \phi$, then
+\begin{align}
+    Q(\phi) = P(A \cup \phi) = P(A) \neq 0
+\end{align}
+Option 4, if $B= \Omega$, then
+\begin{align}
+    Q(\Omega) = P(A/\Omega) = \frac{P(A \cap \Omega)}{P(\Omega)}
+    = P(A)\neq 1
+\end{align}
+All these options doesn't satisfy the properties of Probability measure. Hence, option 3 is right option.
+\end{frame}
+
+\section{Solution}
+\begin{frame}
+\frametitle{Solution}
+Option 3, The indicator function $I_{B}$ defines a Bernoulli random variable. Then $\forall x \in \Omega$ 
+\begin{align}
+I_{B}(x) = \begin{cases}
+1 & \text{ if $x\in B$},\\
+0 & \text{ if $x\notin B$},
+\end{cases}
+\end{align}
+if $B=\phi$, 
+\begin{align}
+    Q(\phi) = \mathbb{E}(XI_{\phi}) = \sum_{x\in\Omega} \sum_{x\in\Omega} x.I_{B}(x)P((X=x).(I_{B}(x)))
+\end{align}
+Here, $\forall x \in \Omega$, $I_{B}(x)=0$, as $B=\phi$. \\
+if $B=\Omega$, 
+\begin{align}
+    Q(\Omega) = \mathbb{E}(XI_{\Omega}) =\sum_{x\in\Omega} \sum_{x\in\Omega} x.I_{B}(x)P((X=x).(I_{B}(x))) \\= \mathbb{E}(X)=1
+\end{align}
+Here, $\forall x \in \Omega$, $I_{B}(x)=1$, as $B=\Omega$. \\
+\end{frame}
+
+\section{Solution}
+\begin{frame}
+\frametitle{Solution}
+Checking for Countable additivity of Q(property 2),
+\begin{align}
+    Q\left(\bigcup_{i=1}^{\infty} A_{i}\right) = \mathbb{E}(XI_{\bigcup_{i=1}^{\infty} A_{i}\right)})
+\end{align}
+Using Property of Countable additivity on indicator functions expectation can be re-written as below,
+\begin{align}
+    =\mathbb{E}\left(X\sum_{i=1}^{\infty}I_{A_{i}}\right) =\mathbb{E}\left(\sum_{i=1}^{\infty}XI_{A_{i}}\right)
+    =\sum_{i=1}^{\infty}\mathbb{E}\left(XI_{A_{i}}\right)
+\end{align}
+\begin{align}
+     \sum_{i=1}^{\infty}Q(A_{i})
+\end{align}
+\end{frame}
+
+
+\end{document}

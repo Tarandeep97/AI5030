@@ -181,16 +181,31 @@ I_{B} = \begin{cases}
 \end{align}
 if $B=\phi$, 
 \begin{align}
-    Q(\phi) = E(XI_{\phi}) =0
+    Q(\phi) = E(XI_{\phi}) 
+\end{align}
+\begin{align}
+     \sum_{x\in\Omega} \sum_{x\in\Omega} x.I_{B}(x)P((X=x).(I_{B}(x)))
+\end{align}
+Here, $\forall x \in \Omega$, $I_{B}(x)=0$, as $B=\phi$. Hence, 
+\begin{align}
+    Q(\phi) = 0
 \end{align}
 if $B=\Omega$, 
 \begin{align}
-    Q(\Omega) = E(XI_{\Omega}) = E(X)=1
+    Q(\Omega) = E(XI_{\Omega})
+\end{align}
+\begin{align}
+    =\sum_{x\in\Omega} \sum_{x\in\Omega} x.I_{B}(x)P((X=x).(I_{B}(x)))
+\end{align}
+Here, $\forall x \in \Omega$, $I_{B}(x)=1$, as $B=\Omega$. Hence,
+\begin{align}
+    Q(\Omega) = \mathbb{E}(X)=1
 \end{align}
 Checking for Countable additivity of Q(property 2),
 \begin{align}
     Q\left(\bigcup_{i=1}^{\infty} A_{i}\right) = E(XI_{\bigcup_{i=1}^{\infty} A_{i}\right)})
 \end{align}
+Using Property of Countable additivity on indicator functions, expression can be re-written as below,
 \begin{align}
     =E\left(X\sum_{i=1}^{\infty}I_{A_{i}}\right) =E\left(\sum_{i=1}^{\infty}XI_{A_{i}}\right)
 \end{align}
@@ -201,5 +216,7 @@ Checking for Countable additivity of Q(property 2),
     = \sum_{i=1}^{\infty}Q(A_{i})
 \end{align}
 Option 3 satisfies properties of a probability measure. Hence, it is the correct option.\\
+
+
 
 \end{document}

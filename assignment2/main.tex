@@ -138,7 +138,7 @@ https://github.com/Tarandeep97/AI5030
 \section{Problem}
 (52) Suppose X$\sim$ Cauchy(0,1). Then the distribution of
 $\frac{1-X}{1+X}$ is?
-\section{Solution}
+\section{Solution - Method I}
 A continuous random variable X follows \textbf{Cauchy distribution} with parameters $\mu$ and $\lambda$ if its pdf is given by
 \\
     \begin{equation*} f(x) =\left\{ \begin{array}{ll} \frac{\lambda}{\pi}\cdot \frac{1}{\lambda^2+(x-\mu)^2}, & \hbox{$-\infty < x< \infty$;} \\ & \hbox{$-\infty < \mu< \infty$, $\lambda>0$;} \\ 0, & \hbox{Otherwise.} \end{array} \right. \end{equation*}
@@ -152,63 +152,62 @@ When $\mu$=0 and $\lambda$=1, then the distribution is called \textbf{Standard C
 
 Let,
 \begin{align}
-    Y = \frac{1-X}{1+X}
+    Y = g(X) = \frac{1-X}{1+X}
 \end{align}
-Then, cdf of Y is
+\textbf{Range of Y} \\
+Since g(X) is self-inverse of itself,it is bijective in nature. Self-inverse nature of g(X) is verified below,
+\begin{align}
+    g\left(\frac{1-X}{1+X}\right) = \frac{1-\frac{1-X}{1+X}}{1+\frac{1-X}{1+X}}
+    = X
+\end{align}
+So, g(X) $\in (-\infty,\infty)$. \\
+\\
+
+\textbf{Expression for CDF of Y}
 \begin{align}
     F_{Y}(y) = P(Y \leq y)
 \end{align}
 \begin{align}
     = P\left(\frac{1-X}{1+X} \leq y\right)
 \end{align}
+If X $\in (-\infty,-1)$, $(1+X)<0$. So, inequality should be reversed.
 \begin{align}
-    = P\left((1-X) \leq y.(1+X)\right)
+    = P\left((1-X) \geq y.(1+X)\right)
 \end{align}
 \begin{align}
-    = P\left((1-X) \leq (y+y.X)\right)
+    = P\left((1-X) \geq (y+y.X)\right)
 \end{align}
 \begin{align}
-    = P\left((1-y) \leq (X+y.X)\right)
+    = P\left((1-y) \geq (X+y.X)\right)
 \end{align}
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\columnwidth]{cdf.png}
-\caption*{Fig 1. CDF of Y}
-\label{fig:fig1}
-\end{figure}
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\columnwidth]{pdf.png}
-\caption*{Fig 2. PDF of Y}
-\label{fig:fig2}
-\end{figure}
+
+\begin{align}
+    = P\left(\frac{1-y}{1+y} \geq X \right) = P\left[-\infty < X \leq \left(\frac{1-y}{1+y}\right)\right]
+\end{align}
+\begin{align}
+    = F_{X}\left(\frac{1-y}{1+y}\right) - F_{X}(-\infty)
+\end{align}
+If X $\in (-1,\infty)$, $(1+X)>0$. The expression can be rewritten as
 \begin{align}
     = P\left(\frac{1-y}{1+y} \leq X \right)
 \end{align}
 \begin{align}
-    = 1 - P\left(X < \frac{1-y}{1+y}\right)
+    = P\left[\left(\frac{1-y}{1+y}\right) \leq X < \infty \right]
 \end{align}
 \begin{align}
-    = 1 -  \int_{-\infty}^{\frac{1-y}{1+y}} f(x) \,dx
+    = F_{X}(\infty) - F_{X}\left(\frac{1-y}{1+y}\right)
+\end{align}
+Now, using above equation CDF of Y will be,
+\begin{align}
+   F_{Y}(y) = P\left[-\infty < X \leq -1 \right] + P\left[\left(\frac{1-y}{1+y}\right) \leq X < \infty \right]
 \end{align}
 \begin{align}
-    = 1 -  \int_{-\infty}^{\frac{1-y}{1+y}} \frac{1}{\pi}\cdot \frac{1}{1+x^2} \,dx
+    = \left(F_{X}(-1) - F_{X}(-\infty)\right) + \left(F_{X}(\infty) - F_{X}\left(\frac{1-y}{1+y}\right)\right)
 \end{align}
 \begin{align}
-    = 1 -  \frac{1}{\pi}\cdot \left[tan^{-1}x\right]_{-\infty}^{\frac{1-y}{1+y}}
+    = \frac{3}{4}-\frac{1}{\pi}.tan^{-1}\left(\frac{1-y}{1+y}\right)\right)
 \end{align}
-\begin{align}
-    = 1 -  \frac{1}{\pi}\cdot \left[\left[tan^{-1}x\right]_{-\infty}^{0}+\left[tan^{-1}x\right]_{0}^{\frac{1-y}{1+y}}\right]
-\end{align}
-\begin{align}
-    = 1 -  \frac{1}{\pi}\cdot \left[-\frac{\pi}{2}+\left[tan^{-1}x\right]_{0}^{\frac{1-y}{1+y}}\right]
-\end{align}
-\begin{align}
-    F_{Y}(y) = 1 -  \frac{1}{\pi}\cdot \left[-\frac{\pi}{2}+tan^{-1}\left({\frac{1-y}{1+y}}\right)\right]
-\end{align} \\
-
-
-The pdf of Y is
+\textbf{Expression for PDF of Y}
 \begin{align}
     f_{Y}(y) = \frac{d F_{Y}(y)}{dy} = -\frac{1}{\pi}\cdot\frac{d\left(tan^{-1}\left({\frac{1-y}{1+y}}\right)\right)}{dy}
 \end{align}
@@ -222,6 +221,90 @@ The pdf of Y is
     = \frac{1}{\pi}\cdot \frac{1}{1+y^2}
 \end{align}
 Hence,  Y $\sim$ Cauchy(0,1).\\
-
+\section{Solution - Method II}
+\textbf{Theorem}: If U$\sim$ Normal(0,1),V$\sim$ Normal(0,1) are independent then $X = \frac{U}{V}$ is a Cauchy Distribution.
+\begin{align}
+    Y = \frac{1-X}{1+X} = \frac{1-\frac{U}{V}}{1+\frac{U}{V}} = \frac{U-V}{U+V} 
+\end{align}
+U-V and U+V are also independent and normally distributed. \\
+Hence, Y$\sim$Cauchy(0,1).
+\section{Appendix}
+\textbf{Theorem}: If U$\sim$ Normal(0,1),V$\sim$ Normal(0,1) are independent then $X = \frac{U}{V}$ is a Cauchy Distribution. \\ 
+\\
+\textbf{Proof}:
+PDF of U and V is given as,
+\begin{align}
+    f_{U}(u) = \frac{1}{\sqrt{2\pi}}.e^{-\frac{u^{2}}{2}},f_{V}(v) = \frac{1}{\sqrt{2\pi}}.e^{-\frac{v^{2}}{2}}
+\end{align}
+where $-\infty<$u,v $<\infty$ \\
+Since U and V are independent, their joint PDF is given by,
+\begin{align}
+    f_{UV}(u,v) = \frac{1}{2\pi}.e^{-\frac{u^{2}+v^{2}}{2}}
+\end{align}
+\begin{align}
+    F_{X}(x) = P(X\leq x) = P\left(\frac{U}{V}\leq x\right)
+\end{align}
+\begin{align}
+     = P(U\leq V.x,V\geq 0)+P(U\geq V.x,V< 0)
+\end{align}
+\begin{align}
+     = \int_{0}^{\infty} \int_{-\infty}^{v.x} f_{uv}(u,v) \,du \,dv + \int_{-\infty}^{0} \int_{-\infty}^{v.x} f_{uv}(u,v) \,du \,dv
+\end{align}
+Differentiating $F_{X}(x)$ to obtain PDF of X, $f_{X}(x)$ \\
+(Using Leibniz's Integral Rule)
+\begin{align}
+    f_{X}(x) = \int_{0}^{\infty} v. f_{uv}(vx,v) \,dv + \int_{-\infty}^{0}(-v).f_{uv}(vx,v) \,dv
+\end{align}
+\begin{align}
+    f_{X}(x) = \int_{0}^{\infty} v. \frac{1}{2\pi}.e^{-\frac{(1+x^{2})v^{2}}{2}} \,dv + \int_{-\infty}^{0}(-v).\frac{1}{2\pi}.e^{-\frac{(1+x^{2})v^{2}}{2}}\,dv
+\end{align}
+Let,
+\begin{align}
+ u = \frac{(1+x^2)v^2}{2}
+\end{align}
+\begin{align}
+ \frac{du}{dv} = (1+x^2)v \Rightarrow dv = \frac{du}{(1+x^2)v}
+\end{align}
+\begin{align}
+    f_{X}(x) = \int_{0}^{\infty}  \frac{1}{2\pi (1+x^2)}.e^{-u} \,du - \int_{-\infty}^{0}\frac{1}{2\pi(1+x^2)}.e^{-u}\,du
+\end{align}
+\begin{align}
+    f_{X}(x) = \frac{1}{\pi(1+x^2)}
+\end{align}
+Hence, X$\sim$ Cauchy(0,1) \\
+\textbf{Theorem}: If U$\sim$ Normal(0,1) and V$\sim$ Normal(0,1), then (U-V) and (U+V) are independent. \\
+\textbf{Proof}: For (U+V) and (U-V) to be independent their co-variance must be 0.
+\begin{align}
+   = E[(U+V)(U-V)]-E[U+V]E[U-V]
+\end{align}
+\begin{align}
+   = E[U^2]+E[V^2]-(E[U]+E[V])(E[U]-E[V])
+\end{align}
+Hence,
+\begin{align}
+   cov(U+V,U-V)=0
+\end{align}
+\textbf{Leibniz Integral Rule:}
+For an integral form \[ \int_{a(x)}^{b(x)} f(x,t) \,dt \]
+where $-\infty<a(x),b(x)<\infty$, the derivative of this integral is expressed as,
+\begin{align}
+   \frac{d}{dx} \left(\int_{a(x)}^{b(x)} f(x,t) \,dt\right)
+\end{align}
+\begin{align}
+   = f(x,b(x)).\frac{d}{dx}b(x)-f(x,a(x)).\frac{d}{dx}a(x) \\
+   +\int_{a(x)}^{b(x)} \frac{\partial}{\partial x} f(x,t) \,dt
+\end{align}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\columnwidth]{cdf.png}
+\caption*{Fig 1. CDF of Y}
+\label{fig:fig1}
+\end{figure}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\columnwidth]{pdf.png}
+\caption*{Fig 2. PDF of Y}
+\label{fig:fig2}
+\end{figure}
 
 \end{document}

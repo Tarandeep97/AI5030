@@ -1,0 +1,91 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{beaver}
+\usepackage{amsmath}
+\usepackage{verbatim}
+
+\title{Estimation}
+\subtitle{Assignment 5 - Q55, June 2018}
+\author{Tarandeep Singh}
+\institute{IIT Hyderabad}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+\begin{comment}
+\section{Introduction}
+
+
+\end{comment}
+\section{The Problem}
+\subsection{Problem Statement}
+
+\begin{frame}
+\frametitle{Problem Statement}
+Consider the problem of estimation of a parameter $\theta$ on the basis of X, where X$\sim$N($\theta$,1) and $-\infty<\theta<\infty$. Under squared error loss, X has uniformly smaller risk than that of kX, for
+\begin{enumerate}
+\item $k<0$
+\item $0<k<1$
+\item $k>1$
+\item no value of k
+\end{enumerate}
+\end{frame}
+
+
+
+\subsection{Problem Explanation}
+
+\section{Solution}
+\begin{frame}
+\frametitle{Solution}
+Let $\hat{\theta}$ be the estimated mean for parameter $\theta$, then squared loss is given by,
+\begin{align}
+    L(\theta,\hat{\theta}) = (\theta - \hat{\theta})^2
+\end{align}
+The Risk of the estimator for X is,
+\begin{align}
+    R(\theta,\hat{\theta}) = E[L(\theta,\hat{\theta})]
+\end{align}
+\begin{align}
+    = E[(\theta - \hat{\theta})^2] 
+\end{align}
+\end{frame}
+
+\section{Solution}
+\begin{frame}
+\frametitle{Solution}
+Let Y = kX then,
+\begin{align}
+    E[Y] = E[kX] = kE[X]
+\end{align}
+\begin{align}
+    E[Y] = k\theta
+\end{align}
+The estimated mean for Y will be $k\hat{\theta}$.\\
+So,the Risk of estimator for Y is,
+\begin{align}
+    R(k\theta,k\hat{\theta}) = E[L(k\theta,k\hat{\theta})]
+\end{align}
+\begin{align}
+    = E[(k\theta - k\hat{\theta})^2] 
+\end{align}
+\end{frame}
+
+\section{Solution}
+\begin{frame}
+\frametitle{Solution}
+\begin{align}
+    = k^2.E[(\theta - \hat{\theta})^2] 
+\end{align}
+On comparing risks of X and kX,
+\begin{align}
+   E[(\theta - \hat{\theta})^2] < k^2.E[(\theta - \hat{\theta})^2]
+\end{align}
+for $k>1$.\\
+Hence, option 3 is correct.
+\end{frame}
+
+\end{document}

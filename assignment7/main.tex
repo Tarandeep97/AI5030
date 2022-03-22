@@ -156,16 +156,26 @@ where $(X^\prime, Y^\prime)$ is bivariate normal independent of X and Y.
 \begin{align}
     \begin{pmatrix}X^\prime\\Y^\prime\end{pmatrix} \sim N_{2} \left[\begin{pmatrix}0\\0\end{pmatrix},\begin{pmatrix}1\ \rho\\ \rho\ 1\end{pmatrix} \right]
 \end{align}
-Using equation 2.0.1,
+Let $Z_{1}= X-X^\prime$ and $Z_{2}= Y-Y^\prime$\\
+In equation 2.0.1,
 \begin{align}
-    \tau_{\rho}(X,Y)= 2.P((X-X^\prime)(Y-Y^\prime)>0)-1
-\end{align}
-Let $Z_{1}= X-X^\prime$ and $Z_{2}= Y-Y^\prime$
-\begin{align}
-    \tau_{\rho}(X,Y)= 2.P(Z_{1}Z_{2}>0)-1
+    \tau_{\rho}(X,Y)= P(Z_{1}Z_{2}>0)-P(Z_{1}Z_{2}<0)
 \end{align}
 \begin{align}
-    = 2.[P(Z_{1}>0,Z_{2}>0)]-1
+    \tau_{\rho}(X,Y)= P(Z_{1}Z_{2}>0)-[1-P(Z_{1}Z_{2}\geq0)]
+\end{align}
+\begin{align}
+    = 2.[P(Z_{1}Z_{2}>0)+P(Z_{1}Z_{2}=0)]-1
+\end{align}
+\begin{align}
+    = 2.[P(Z_{1}Z_{2}>0)]-1
+\end{align}
+\begin{align}
+    = 2.[P(Z_{1}>0,Z_{2}>0)+P(Z_{1}<0,Z_{2}<0)]-1
+\end{align}
+By symmetry,
+\begin{align}
+    = 4.[P(Z_{1}<0,Z_{2}<0)]-1
 \end{align}
 Expectation of $Z_{1}$ and $Z_{2}$
 \begin{align}
@@ -194,17 +204,13 @@ So, distribution of bivariate (Z1,Z2) is
 \begin{align}
 \begin{pmatrix}Z_{1}\\Z_{2}\end{pmatrix}=\begin{pmatrix}X-X^\prime\\Y-Y^\prime\end{pmatrix} \sim N_{2} \left[\begin{pmatrix}0\\0\end{pmatrix},\begin{pmatrix}2\ 2\rho\\ 2\rho\ 2\end{pmatrix} \right]
 \end{align}
-This further implies,
+This implies,
 \begin{align}
     \frac{1}{\sqrt{2}}\begin{pmatrix}Z_{1}\\Z_{2}\end{pmatrix}=\begin{pmatrix}X\\Y\end{pmatrix}
 \end{align}
-So, equation 2.0.5 can be rewritten as,
+So, equation 2.0.8 can be rewritten as,
 \begin{align}
-    \tau_{\rho}(X,Y) = 2.[P(X>0,Y>0)]-1
-\end{align}
-Now, by symmetry,
-\begin{align}
-    \tau_{\rho}(X,Y) = 2.2.[P(X\leq0,Y\leq0]]-1
+    \tau_{\rho}(X,Y) = 4.[P(X<0,Y<0)]-1
 \end{align}
 \begin{align}
     \tau_{\rho}(X,Y) = 4.\phi_{\rho}(0,0)-1
